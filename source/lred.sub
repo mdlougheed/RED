@@ -1,0 +1,5 @@
+;link RED with the BDS C linker
+a:clink red2 -s -ea400 -r1000 red3 red4 red5 red6 red7 red8 red9 red10 red11 red12 red13 red14
+era red.com
+ren red.com=red2.com
+ink red2 -s -ea400 -r1000 red3 red4 red5 red6 red7 red8 red9 red10 red11 red12 red13 red14
