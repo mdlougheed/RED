@@ -3,7 +3,7 @@
 April 19, 2020
 
 
-RED is a lightweight, screen-oriented, plain-text file editor.  RED is an improved editor over ED2 (EDSCREEN) by including more features such as text block move,copy,insertion and extraction - and is capable of editing large files than can fit into CP/M available memory, owing to virtual (disk) memory buffer page swapping.
+RED is a lightweight, screen-oriented, plain-text file editor.  RED is an improved editor over ED2 (EDSCREEN) by including more features such as text block move,copy,insertion and extraction - and is capable of editing larger files than can fit into CP/M available memory, owing to virtual (disk) memory buffer page swapping.
 
 RED for CP/M is updated from the original Edward K. Ream program first published in Dr. Dobbs Journal #81 & #82, JUL/AUG 1983.  The original source code for this version of RED is part of the BDS-C v1.6, released into the public domain, September 20, 2002.  The editor maintains its BDS-C compiler compatibility, debug and error correction feature set.
 [https://www.bdsoft.com/resources/bdsc.html](https://www.bdsoft.com/resources/bdsc.html)
