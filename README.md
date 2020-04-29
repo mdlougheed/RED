@@ -1,4 +1,3 @@
-#THIS IS A WORK IN PROGRESS
 # RED Screen Editor: v7.1
 April 19, 2020
 
