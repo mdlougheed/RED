@@ -1,21 +1,21 @@
 ;compile all files of RED with the BDS C compiler
 ;
-a:cc red2.c  -x -ea400
-a:cc red3.c  -x -ea400
-a:cc red4.c  -x -ea400
-a:cc red5.c  -x -ea400
-a:cc red6.c  -x -ea400
-a:cc red7.c  -x -ea400
-a:cc red8.c  -x -ea400
-a:cc red9.c  -x -ea400
-a:cc red10.c -x -ea400
-a:cc red11.c -x -ea400
-a:cc red12.c -x -ea400
-a:cc red13.c -x -ea400
-a:cc red14.c -x -ea400
+i:cc red2.c  -x -ea550
+i:cc red3.c  -x -ea550
+i:cc red4.c  -x -ea550
+i:cc red5.c  -x -ea550
+i:cc red6.c  -x -ea550
+i:cc red7.c  -x -ea550
+i:cc red8.c  -x -ea550
+i:cc red9.c  -x -ea550
+i:cc red10.c -x -ea550
+i:cc red11.c -x -ea550
+i:cc red12.c -x -ea550
+i:cc red13.c -x -ea550
+i:cc red14.c -x -ea550
 ;
 ;Uncomment if linking RED with the BDS C linker
-a:clink red2 -s -ea400 -r1000 red3 red4 red5 red6 red7 red8 red9 red10 red11 red12 red13 red14
+i:clink red2 -s -ea550 -r1000 red3 red4 red5 red6 red7 red8 red9 red10 red11 red12 red13 red14
 ;
 ;Uncomment if linking RED with L2
 ;a:l2 red2 -f 300 red3 red4 red5 red6 red7 red8 red9 red10 red11 red12 red13 red14 -wa
