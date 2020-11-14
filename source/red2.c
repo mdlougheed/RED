@@ -9,6 +9,9 @@
 
 	Additions and updates to mode/key operational consistency & convienience
 	Mark D. Lougheed - APR, 2020
+	
+	Added ANSI terminal ESCape sequence traps
+	MDL - NOV-2020
 */
 
 #include "red.h"
@@ -113,7 +116,7 @@ char **argv;
 	message(SIGNON);
 	message(VERSION);
 	message(COPYRIGHT);
-	message("Additions by Mark D. Lougheed, APR 2020");
+	message("Additions by Mark D. Lougheed, NOV 2020");
 	message("");
 	message(XSIGN);
 	message(XSIGN1);
@@ -726,7 +729,4 @@ char *args;
 			}
 		}
 	}
-	args [length] = EOS;
-
-	/* Restore the cursor. */
-	outxy(x, y);
+	arg
