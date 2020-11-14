@@ -8,7 +8,7 @@
 	Copyright (C) 1983, 1984, 1985, 1986 by Enteleki, Inc.
 	All Rights Reserved
 
-	Additions by Mark D. Lougheed APR-2020
+	Additions by Mark D. Lougheed NOV-2020
 */
 
 #include "red.h"
@@ -163,27 +163,55 @@ int
 syscstat()
 {
 	int c, i;
+	int c1;
 
 	/* Always look for another character. */
-
+	/* Trap ANSI terminal ESCapes - MDL NOV-2020 */
+	do{
 #ifdef KAYPRO
-	if (!(inp(7) & 1)) {
-		c = 0;
-	}
-	else {
-		c = inp(5);
-	}
+		if (!(inp(7) & 1)) {
+			c = 0;
+		}
+		else {
+			c = inp(5);
+		}
 #else
-	c = bdos(6,-1);
+		c = bdos(6,-1);
 #endif
 
-	if (c != 0) {
-		syslastc = c;
-		sysrcnt  = 0;
-		syscbuf [sysccnt++] = c;
-	}
+		if (c != 0) {
+			syslastc = c;
+			sysrcnt  = 0;
+			syscbuf [sysccnt++] = c;
+		}
+
+	} while(c != 0);	/* Collect "rapid" entry characters
+				 * which may indicate a ESCape sequence
+				 */
 
 	if (sysccnt > 0) {
+		/* If we have more than 3 characters in the buffer
+		 * we may have an ESCape sequence
+		 */
+		if(sysccnt >= 3){
+ 			c1=syscbuf[sysccnt-1];
+			if(syscbuf[sysccnt-2]=='[' && syscbuf[sysccnt-3]==0x1b)
+				{
+				/* We've trapped an escape sequence!
+				 * So parse it out.
+				 */
+				sysccnt-=3;
+				switch(c1){
+					case 'A': c1=UP; break;
+					case 'B': c1=DOWN; break;
+					case 'C': c1=RIGHT; break;
+					case 'D': c1=LEFT; break;
+				}
+
+			syscbuf[sysccnt++]=c1;
+			}
+		}
+
 		return syscbuf [--sysccnt];
 	}
 	else {
@@ -713,4 +741,7 @@ char *args, *buffer;
 	}
 	buffer[n] = EOS;
 }
-   n < 
+   n < SYSFNMAX -1 && args [n] != EOS && args [n] != ' ';
+	     n++) {
+
+		buffer [n] 
