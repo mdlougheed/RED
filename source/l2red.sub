@@ -1,5 +1,7 @@
 ;link RED with the l2 linker
-l2 red2 -f 300 red3 red4 red5 red6 red7 red8 red9 red10 red11 red12 red13 red14 -wa
+i:l2 red2 -f 300 red3 red4 red5 red6 red7 red8 red9 red10 red11 red12 red13 red14 -wa
 era red.com
 ren red.com=red2.com
-
+ker
+i:l2 red2 -f 300 red3 red4 red5 red6 red7 red8 red9 red10 red11 red12 red13 red14 -wa
+era red.com
