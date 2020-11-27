@@ -1,5 +1,16 @@
 # RED Screen Editor: v7.1
-April 19, 2020
+November 26, 2020
+
+- RED has been updated to support the S-100 Propeller Console I/O Board!
+
+[http://www.s100computers.com/My%20System%20Pages/Console%20IO%20Board/Console%20IO%20Board.htm]
+
+The Propeller Console I/O board processes character output through VT-100 (ANSI) style commands and input via PS-2 keyboard.
+
+RED8.c is updated to select between CP/M BDOS, Kaypro and Propeller I/O Board for console input.  This update will also detect and parse ANSI arrow keyboard keypresses.
+
+A custom configuration RED6.c is available to work with ANSI terminal output control sequences.  Also added are pre-compiled executable binary CP/M COM files for some configurations.
+
 
 
 RED is a lightweight, screen-oriented, plain-text file editor.  RED is an improved editor over ED2 (EDSCREEN) by including more features such as text block move,copy,insertion and extraction - and is capable of editing larger files than can fit into CP/M available memory, owing to virtual (disk) memory buffer page swapping.
