@@ -13,9 +13,15 @@
 
 #include "red.h"
 
-/* comment out -----
-#define KAYPRO 1
------ end comment out */
+/* Uncomment if using BDOS for keyboard I/O */
+#define BDOSIO 
+
+/* Uncomment if using KAYPRO for console I/O */
+/* #define KAYPRO 1 */
+
+/* Uncomment if S100 PropellerBoard Console I/O */ 
+/* #define PROPELLER */
+
 
 /*
 	NOTE:  This module should contain ALL routines that
@@ -168,6 +174,18 @@ syscstat()
 	/* Always look for another character. */
 	/* Trap ANSI terminal ESCapes - MDL NOV-2020 */
 	do{
+#ifdef PROPELLER
+#define KEYSTAT 0x00
+#define KEYIN	0x01
+
+		if(!(inp(KEYSTAT) & 0x02)){
+			c = 0;
+		}
+		else{
+			c = inp(KEYIN);
+		}
+#endif
+
 #ifdef KAYPRO
 		if (!(inp(7) & 1)) {
 			c = 0;
@@ -175,7 +193,9 @@ syscstat()
 		else {
 			c = inp(5);
 		}
-#else
+#endif
+
+#ifdef BDOSIO 
 		c = bdos(6,-1);
 #endif
 
@@ -250,6 +270,18 @@ syscin()
 #endif
 
 	}
+
+#ifdef PROPELLER
+	if (c > 127){
+		switch(c){
+			case 0xc2:	return UP;	/* UP Arrow */
+			case 0xc3:	return DOWN;	/* DOWN Arrow */
+			case 0xc0:	return LEFT;	/* LEFT Arrow */
+			case 0xc1:	return RIGHT;	/* RIGHT Arrow */
+			default:	return c & 0x7f;
+		}
+	}
+#endif
 
 #ifdef KAYPRO
 	/* Handle cursor keys and the numeric keypad. */
@@ -744,4 +776,7 @@ char *args, *buffer;
    n < SYSFNMAX -1 && args [n] != EOS && args [n] != ' ';
 	     n++) {
 
-		buffer [n] 
+		buffer [n] = args [n];
+	}
+	buffer[n] = EOS;
+}
